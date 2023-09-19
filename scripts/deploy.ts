@@ -1,6 +1,6 @@
 import { setDeploymentAddress } from '../.deployment/deploymentManager'
 import { task } from 'hardhat/config'
-import { verifyAddress } from '../utils/verifyAddress'
+import { verifyAddress } from './utils/verifyAddress'
 
 task('deploy', 'Deploy all contracts')
   .addFlag('verify', 'verify contracts on etherscan')

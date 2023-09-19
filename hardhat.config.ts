@@ -5,9 +5,7 @@ import { resolve } from 'path'
 import '@nomicfoundation/hardhat-toolbox'
 import 'hardhat-contract-sizer'
 import './scripts/deploy'
-import './scripts/wallet'
 import { Network } from './scripts/config'
-import { get } from 'http'
 
 dotenvConfig({ path: resolve(__dirname, './.env') })
 
