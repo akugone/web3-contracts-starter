@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
 // Uncomment this line to use console.log
@@ -17,9 +17,12 @@ contract Storage {
 
     function setData(string memory _data) public {
         data = _data;
+        emit DataSet(_data);
     }
 
     fallback() external {
         console.log("Fallback called");
     }
+
+    event DataSet(string data);
 }
