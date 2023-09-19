@@ -1,3 +1,4 @@
+import { Wallet } from 'ethers'
 import { task } from 'hardhat/config'
 
 // https://hardhat.org/guides/create-task.html
@@ -18,7 +19,9 @@ task('newtask', 'Description of what ploup does')
       console.log('My new task')
 
       // Get the param
-      const param = args.param || myparam
+      const [deployer] = await ethers.getSigners()
+
+      const param = deployer || myparam
       console.log('Param: ', param)
 
       // Get the flag : run the command with npx hardhat newtask --flag
