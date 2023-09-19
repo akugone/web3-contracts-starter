@@ -1,4 +1,4 @@
-import { loadJSON, saveJSON } from "../scripts/utils/files";
+import { loadJSON, saveJSON } from "../utils/files";
 
 export const CONTRACT_NAMES = ["Storage"] as const;
 
