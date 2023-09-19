@@ -1,9 +1,10 @@
 import fs from 'fs'
 
-export const loadJSON = (filename: string) => {
-  return fs.existsSync(filename) ? fs.readFileSync(filename).toString() : '{}'
+export function loadJSON(filename: string) {
+  const file = fs.existsSync(filename) ? fs.readFileSync(filename).toString() : '{}'
+  return JSON.parse(file)
 }
 
-export const saveJSON = (filename: string, json: string) => {
+export function saveJSON(filename: string, json: string) {
   return fs.writeFileSync(filename, JSON.stringify(json, null, 2))
 }

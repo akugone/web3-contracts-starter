@@ -1,35 +1,39 @@
-import { Network } from '../scripts/config'
+import { loadJSON, saveJSON } from "../utils/files";
 
+export const CONTRACT_NAMES = ["Storage"] as const;
 
-const getFilename = (network: Network) => `${__dirname}/talent.config_${network}.json`
+export type ContractName = (typeof CONTRACT_NAMES)[number];
 
-export enum ConfigProperty {
-  Storage = 'storage',
+const getFilename = (network: string) => `${__dirname}/${network}.json`;
 
-}
+export const getDeploymentAddress = (
+  network: string,
+  contractName: ContractName
+): string => {
+  const obj = loadJSON(getFilename(network));
+  return obj[contractName] || "Not found";
+};
 
+export const getDeployment = (network: string) => {
+  const obj = loadJSON(getFilename(network));
+  return obj || "Not found";
+};
 
+export const setDeploymentAddress = (
+  network: string,
+  contractName: ContractName,
+  value: string
+) => {
+  const obj = loadJSON(getFilename(network));
+  obj[contractName] = value;
+  saveJSON(getFilename(network), obj);
+};
 
-export const get = (network: Network, property: ConfigProperty) => {
-  const obj = JSON.parse(loadJSON(network))
-  return obj[property] || 'Not found'
-}
-
-export const getConfig = (network: any) => {
-  const obj = JSON.parse(loadJSON(network))
-  return obj || 'Not found'
-}
-
-export const set = (network: Network, property: ConfigProperty, value: string) => {
-  const obj = JSON.parse(loadJSON(network) || '{}')
-  obj[property] = value
-  saveJSON(network, obj)
-}
-
-export const remove = (network: Network, property: ConfigProperty) => {
-  const obj = JSON.parse(loadJSON(network) || '{}')
-  delete obj[property]
-  saveJSON(network, obj)
-}
-
-
+export const removeDeploymentAddress = (
+  network: string,
+  contractName: ContractName
+) => {
+  const obj = loadJSON(getFilename(network));
+  delete obj[contractName];
+  saveJSON(getFilename(network), obj);
+};
