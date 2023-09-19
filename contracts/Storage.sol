@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.9;
+
+contract Storage {
+    string private data;
+
+    constructor(string memory initialData) {
+        data = initialData;
+    }
+
+    function getData() view public returns (string memory) {
+        return data;
+    }
+
+    function setData(string memory _data) public {
+        data = _data;
+    }
+
+    fallback() external {
+        console.log("Fallback called");
+    }
+}
