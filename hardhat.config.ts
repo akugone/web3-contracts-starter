@@ -43,7 +43,7 @@ const config: HardhatUserConfig = {
         mnemonic,
         count: 100,
       },
-      chainId: Network.LOCAL,
+      chainId: 1337,
     },
     mumbai: {
       url: 'https://matic-mumbai.chainstacklabs.com',
