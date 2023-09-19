@@ -58,8 +58,37 @@ const config: HardhatUserConfig = {
       accounts,
       chainId: 1337,
     },
+    chiado: {
+      url: 'https://rpc.chiadochain.net',
+      gasPrice: 1000000000,
+      accounts,
+    },
   },
   etherscan: {
+    customChains: [
+      {
+        network: 'chiado',
+        chainId: 10200,
+        urls: {
+          //Blockscout
+          apiURL: 'https://blockscout.com/gnosis/chiado/api',
+          browserURL: 'https://blockscout.com/gnosis/chiado',
+        },
+      },
+      {
+        network: 'gnosis',
+        chainId: 100,
+        urls: {
+          // 3) Select to what explorer verify the contracts
+          // Gnosisscan
+          apiURL: 'https://api.gnosisscan.io/api',
+          browserURL: 'https://gnosisscan.io/',
+          // Blockscout
+          //apiURL: "https://blockscout.com/xdai/mainnet/api",
+          //browserURL: "https://blockscout.com/xdai/mainnet",
+        },
+      },
+    ],
     apiKey: {
       polygonMumbai: process.env.POLYGONSCAN_API_KEY || '',
     },
