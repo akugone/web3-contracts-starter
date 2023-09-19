@@ -3,6 +3,7 @@ import 'hardhat-contract-sizer'
 import '@nomicfoundation/hardhat-toolbox'
 
 import './scripts/tasks/deploy'
+import './scripts/tasks/newtask'
 
 import dotenv from 'dotenv'
 
