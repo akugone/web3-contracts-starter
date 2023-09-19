@@ -63,6 +63,10 @@ const config: HardhatUserConfig = {
       gasPrice: 1000000000,
       accounts,
     },
+    gnosis: {
+      url: 'https://rpc.gnosischain.com',
+      accounts,
+    },
   },
   etherscan: {
     customChains: [
