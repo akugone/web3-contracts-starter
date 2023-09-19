@@ -6,10 +6,12 @@ import './scripts/tasks/deploy'
 import './scripts/tasks/newtask'
 
 import dotenv from 'dotenv'
+import { log } from 'console'
 
 dotenv.config()
 
 const mnemonic = process.env.MNEMONIC
+
 if (!mnemonic) {
   throw new Error('Please set your MNEMONIC in a .env file')
 }
@@ -47,10 +49,14 @@ const config: HardhatUserConfig = {
       chainId: 1337,
     },
     mumbai: {
-      url: 'https://matic-mumbai.chainstacklabs.com',
+      url: 'https://polygon-mumbai.infura.io/v3/' + infuraApiKey,
+      accounts,
+      chainId: 80001,
     },
     sepolia: {
       url: 'https://sepolia.infura.io/v3/' + infuraApiKey,
+      accounts,
+      chainId: 1337,
     },
   },
   etherscan: {
